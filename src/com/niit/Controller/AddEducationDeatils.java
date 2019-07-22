@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.niit.Bean.Education;
-import com.niit.Bean.Personal;
+
 import com.niit.DaoImple.UserService;
+import com.niit.DbConnection.DataBaseController;
 
 
 @WebServlet("/AddEducationDeatils")
@@ -37,10 +38,13 @@ public class AddEducationDeatils extends HttpServlet {
 		String Percent=request.getParameter("PERCENTAGE");
 		
 		UserService us=new UserService();
-		ArrayList<Education>EducationDeatils=new ArrayList<Education>();
-		EducationDeatils=us.AddEducation(UserId, csname, degree, Sub_Comb, POY, Percent);
-		session.setAttribute("EducationDeatils", EducationDeatils);
+	
+		int value=us.AddEducation(UserId, csname, degree, Sub_Comb, POY, Percent);
+		
+		
+		if(value==1) {
 		response.sendRedirect("ExperienceDetails.jsp");
+		}
 		
 		
 	}

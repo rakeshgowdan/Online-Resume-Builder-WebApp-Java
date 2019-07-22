@@ -94,6 +94,7 @@ th {
 <body>
 <jsp:include page="Menu.jsp" />
 <fieldset>
+
 		<legend align="center"><b>**Personal Details**</b> </legend>
 		<!-- <form action="control?action=personal" method="post"> -->
 		<form action="AddPersonalDeatils" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">

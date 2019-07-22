@@ -9,10 +9,11 @@ import com.niit.Bean.Education;
 import com.niit.Bean.Experience;
 import com.niit.Bean.Personal;
 import com.niit.Bean.Projects;
+import com.niit.DbConnection.DataBaseController;
 
 public class UserService {
 	
-	public ArrayList<Personal> AddPersonal(String UserId,String FirstName,String LastName,String FatherName,String MotherName,String dob,String age,String Gender,String Mobile,String mail, String address,String CO,String Strength,String Lang,String Hobbies,HttpServletRequest request) {
+	public int AddPersonal(String UserId,String FirstName,String LastName,String FatherName,String MotherName,String dob,String age,String Gender,String Mobile,String mail, String address,String CO,String Strength,String Lang,String Hobbies,HttpServletRequest request) {
 		
 		
 		
@@ -37,13 +38,15 @@ public class UserService {
 		
 		ArrayList<Personal>UserDeatils=new ArrayList<Personal>();
 		UserDeatils.add(p);
-		
-		return UserDeatils;
+		System.out.println(p);
+		DataBaseController d=new DataBaseController();
+		int value=d.setPersonal(p,UserId);
+		return value;
 		
 		
 	}
 
-	public ArrayList<Education> AddEducation(String UserId,String csname,String degree,String Sub_Comb,String POY,String Percent)
+	public int AddEducation(String UserId,String csname,String degree,String Sub_Comb,String POY,String Percent)
 	{
 		ArrayList<Education>EducationDeatils=new ArrayList<Education>();
 		
@@ -58,11 +61,14 @@ public class UserService {
 		
 		EducationDeatils.add(e);
 		System.out.println(e);
-		return EducationDeatils;
+		
+		DataBaseController d=new DataBaseController();
+		int value=d.setEducation(e);
+		
+		return value;
 		
 	}
-	
-	public ArrayList<Experience> AddExpirence(String UserId,String Company,String Designation,String Exp,String Summary)
+public 	int AddExpirence(String UserId,String Company,String Designation,String Exp,String Summary)
 	{
 		
 		ArrayList<Experience>ExperienceDeatils=new ArrayList<Experience>();
@@ -75,11 +81,15 @@ public class UserService {
 		
 		System.out.println(e);
 		ExperienceDeatils.add(e);
-		return ExperienceDeatils;
+		
+
+		DataBaseController d=new DataBaseController();
+		int  value=d.setExpirence(e);
+		return value;
 		
 	}
 	
-	public ArrayList<Achievements> AddAchievements(String UserId,String AwardNAME,String Company,String DATE){
+	public int AddAchievements(String UserId,String AwardNAME,String Company,String DATE){
 		
 		
 		ArrayList<Achievements>AchievementsDeatils=new ArrayList<Achievements>();
@@ -91,10 +101,13 @@ public class UserService {
 		a.setDateOfAward(DATE);
 		System.out.println(a);
 		AchievementsDeatils.add(a);
-		return AchievementsDeatils;
+		
+		DataBaseController d=new DataBaseController();
+		int  value=d.setAchievements(a);
+		return value;
 	}
 	
-	public ArrayList<Projects> AddProjects(String UserId,String Projects,String froontend,String backend,String description,String Skill){
+	public int AddProjects(String UserId,String Projects,String froontend,String backend,String description,String Skill){
 		ArrayList<Projects>ProjectDeatils=new ArrayList<Projects>();
 		
 		Projects p=new Projects();
@@ -105,6 +118,9 @@ public class UserService {
 		p.setSkills(Skill);
 		p.setDescription(description);
 		System.out.println(p);
-		return ProjectDeatils;
+		
+		DataBaseController d=new DataBaseController();
+		int value=d.setProjects(p);
+		return value;
 	}
 }

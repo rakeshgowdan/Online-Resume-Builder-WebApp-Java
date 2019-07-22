@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.niit.Bean.Personal;
 import com.niit.DaoImple.UserService;
+import com.niit.DbConnection.DataBaseController;
 
 
 @WebServlet("/AddPersonalDeatils")
@@ -49,9 +50,13 @@ public class AddPersonalDeatils extends HttpServlet {
 		
 		UserService us=new UserService();
 		ArrayList<Personal>UserDeatils=new ArrayList<Personal>();
-		UserDeatils=us.AddPersonal(UserId, FirstName, LastName, FatherName, MotherName, dob, age, Gender, PhoneNumber, Mail, Address, CAREER_OBJECTIVES, STRENGTHS, Languages,HOBBIES,request);
+		int value=us.AddPersonal(UserId, FirstName, LastName, FatherName, MotherName, dob, age, Gender, PhoneNumber, Mail, Address, CAREER_OBJECTIVES, STRENGTHS, Languages,HOBBIES,request);
 		session.setAttribute("UserDeatils", UserDeatils);
+		
+
+		if(value==1) {
 		response.sendRedirect("EducationalDetails.jsp");
+		}
 	     
 	
 	

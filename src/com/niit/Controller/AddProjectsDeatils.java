@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.niit.Bean.Personal;
 import com.niit.Bean.Projects;
 import com.niit.DaoImple.UserService;
+import com.niit.DbConnection.DataBaseController;
 
 
 @WebServlet("/AddProjectsDeatils")
@@ -38,12 +38,13 @@ public class AddProjectsDeatils extends HttpServlet {
 		String Skills=request.getParameter("Skill");
 		String Description=request.getParameter("Description");
 		UserService us=new UserService();
-		ArrayList<Projects>ProjectDeatils=new ArrayList<Projects>();
 		
-		ProjectDeatils=us.AddProjects(UserId, project, FrontEnd, BackEnd, Description, Skills);
 		
-		session.setAttribute("ProjectDeatils", ProjectDeatils);
-		response.sendRedirect("ChooseTemplate.jsp");
+		int value=us.AddProjects(UserId, project, FrontEnd, BackEnd, Description, Skills);
+		
+		
+		if(value==1) {
+		response.sendRedirect("ChooseTemplate.jsp");}
 		
 		
 	}

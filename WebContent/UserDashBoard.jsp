@@ -274,8 +274,8 @@ $(document).ready(function() {
 				<ul>
 					<li class="active"><a href="#">Dashboard</a></li>
 					<li><a href="BuildResume.html">Build Resume</a></li>
-					<li><a href="#">How To Build Effective Resume</a></li>
-					<li><a href="#">Buy Premium</a></li>
+					<li><a href="ChooseTemplate.jsp">Download Resume</a></li>
+					<li><a href="PaymentPage.jsp">Buy Premium</a></li>
 					<li><a href="${pageContext.request.contextPath}/LogoutServlet">LogOut</a></li>
 				</ul>
 			</nav>

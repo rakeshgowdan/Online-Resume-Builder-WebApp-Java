@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.niit.Bean.Achievements;
-import com.niit.Bean.Personal;
+
 import com.niit.DaoImple.UserService;
+import com.niit.DbConnection.DataBaseController;
 
 
 @WebServlet("/AddAchievementDeatils")
@@ -37,10 +38,10 @@ public class AddAchievementDeatils extends HttpServlet {
 		String DATE=request.getParameter("DATE");
 		
 		UserService us=new UserService();
-		ArrayList<Achievements>AchievementsDeatils=new ArrayList<Achievements>();
-		AchievementsDeatils=us.AddAchievements(UserId, AwardNAME, Company, DATE);
-		session.setAttribute("AchievementsDeatils", AchievementsDeatils);
-		response.sendRedirect("Project.jsp");
+	
+		int value=us.AddAchievements(UserId, AwardNAME, Company, DATE);
+		
+		if(value==1) {response.sendRedirect("Project.jsp");}
 		
 	}
 
